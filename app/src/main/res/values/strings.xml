@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Covid-19 Tracker</string>
+    <string name="deaths">Deaths</string>
+    <string name="search">Search</string>
+    <string name="cases">Cases</string>
+    <string name="track_countries">Track Countries</string>
+</resources>
