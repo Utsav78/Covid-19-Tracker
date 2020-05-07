@@ -1,11 +1,20 @@
 package com.codewithutsav.covid_19tracker;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     SimpleArcLoader simpleArcLoader;
     ScrollView scrollView;
     PieChart pieChart;
+    Button btnTryAgain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +53,37 @@ public class MainActivity extends AppCompatActivity {
         tvTotalDeaths = findViewById(R.id.tvTotalDeaths);
         tvTodayDeaths = findViewById(R.id.tvTodayDeaths);
         tvAffectedCountries = findViewById(R.id.tvAffectedCountries);
+
+        //to check internet connection
+        ConnectivityManager connectivityManager = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        //get active network info
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+
+        //check network status
+        if (networkInfo == null || !networkInfo.isConnected() || !networkInfo.isAvailable()){
+            Dialog dialog = new Dialog(this);
+            dialog.setContentView(R.layout.dialog_of_no_internet);
+            dialog.setCanceledOnTouchOutside(false);
+
+            //set dialog width and height
+            dialog.getWindow().setLayout(WindowManager.LayoutParams.WRAP_CONTENT,WindowManager.LayoutParams.WRAP_CONTENT);
+            //set background transparent
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            //set animation
+            dialog.getWindow().getAttributes().windowAnimations = android.R.style.Animation_Dialog;
+
+            btnTryAgain = dialog.findViewById(R.id.btnTryAgain);//this is important hai
+            btnTryAgain.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    recreate();
+                }
+            });
+            dialog.show();
+
+
+        }
+
 
         simpleArcLoader = findViewById(R.id.loader);
         scrollView = findViewById(R.id.scrollViewStats);
@@ -113,5 +154,26 @@ public class MainActivity extends AppCompatActivity {
 
     public void goTrackCountries(View view) {
         startActivity(new Intent(getApplicationContext(),AffectedCountries.class));
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        new AlertDialog.Builder(this).setCancelable(false).setMessage("Do you want to Exit ?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        MainActivity.super.onBackPressed();
+
+
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+
+                    }
+                }).create().show();
     }
 }

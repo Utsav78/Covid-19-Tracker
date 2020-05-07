@@ -4,4 +4,10 @@
     <string name="search">Search</string>
     <string name="cases">Cases</string>
     <string name="track_countries">Track Countries</string>
+    <string name="country">Country</string>
+    <string name="today_cases">Today Cases</string>
+    <string name="today_s_deaths">Today\'s Deaths</string>
+    <string name="recovered">Recovered</string>
+    <string name="active">Active</string>
+    <string name="critical">Critical</string>
 </resources>

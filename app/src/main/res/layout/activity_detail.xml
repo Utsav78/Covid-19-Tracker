@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
-            android:text="Country"
+            android:text="@string/country"
             android:textStyle="bold"
             android:textSize="18sp"/>
 
@@ -101,7 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
-            android:text="Today Cases"
+            android:text="@string/today_cases"
             android:textStyle="bold"
 
             android:textSize="18sp"/>
@@ -141,7 +141,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
-            android:text="Deaths"
+            android:text="@string/deaths"
             android:textStyle="bold"
 
             android:textSize="18sp"/>
@@ -181,7 +181,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
-            android:text="Today's Deaths"
+            android:text="@string/today_s_deaths"
             android:textStyle="bold"
 
             android:textSize="18sp"/>
@@ -221,7 +221,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
-            android:text="Recovered"
+            android:text="@string/recovered"
             android:textStyle="bold"
 
             android:textSize="18sp"/>
@@ -261,7 +261,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
-            android:text="Active"
+            android:text="@string/active"
             android:textStyle="bold"
 
             android:textSize="18sp"/>
@@ -301,7 +301,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
-            android:text="Critical"
+            android:text="@string/critical"
             android:textStyle="bold"
 
             android:textSize="18sp"/>
